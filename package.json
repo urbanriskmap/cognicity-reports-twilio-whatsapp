@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/urbanriskmap/cognicity-reports-twilio-whatsapp/issues"
   },
-  "homepage": "https://github.com/urbanriskmap/cognicity-reports-twilio-whatsapp#readme"
+  "homepage": "https://github.com/urbanriskmap/cognicity-reports-twilio-whatsapp#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "twilio": "^3.22.0"
+  }
 }
