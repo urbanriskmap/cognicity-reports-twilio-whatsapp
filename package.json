@@ -1,0 +1,24 @@
+{
+  "name": "cognicity-reports-twilio-whatsapp",
+  "version": "1.0.0",
+  "description": "Allows WhatsApp users to submit flood reports via chat bot. Part of the CogniCity platform, deployed for Urban Risk Map.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/urbanriskmap/cognicity-reports-twilio-whatsapp.git"
+  },
+  "keywords": [
+    "Twilio",
+    "WhatsApp",
+    "Reports"
+  ],
+  "author": "Mayank Ojha",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/urbanriskmap/cognicity-reports-twilio-whatsapp/issues"
+  },
+  "homepage": "https://github.com/urbanriskmap/cognicity-reports-twilio-whatsapp#readme"
+}
