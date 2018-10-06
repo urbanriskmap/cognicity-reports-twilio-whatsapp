@@ -1,4 +1,6 @@
-require('dotenv').load();
+import dotenv from 'dotenv';
+
+dotenv.config({silent: true});
 
 // use .env for tests, configure in serverless for prod
 // configure in serverless > functions > environment
@@ -11,9 +13,9 @@ export default {
   CARDS_URL: process.env.CARDS_URL || 'https://cards.riskmap.us/',
   DEFAULT_LANGUAGE: process.env.DEFAULT_LANGUAGE || 'en',
   DEPLOYMENT_CODE: process.env.DEPLOYMENT_CODE || 'us',
-  INSTANCE_REGION_CODE: process.env.INSTANCE_REGION_CODE,
+  DEFAULT_INSTANCE_REGION_CODE: process.env.DEFAULT_INSTANCE_REGION_CODE,
   MAP_URL: process.env.MAP_URL || 'https://riskmap.us/',
-  NETWORK_NAME: process.env.NETWORK_NAME || 'whatsapp',
+  NETWORK_NAME: process.env.NETWORK_NAME,
   NETWORK_NUMBER: process.env.NETWORK_NUMBER,
   TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
   TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,

@@ -20,12 +20,51 @@ export default class {
     );
   }
 
-  handleResponse(userMessage, userNumber) {
+  notify(text, userNumber) {
     return new Promise((resolve, reject) => {
-      const msg = userMessage.toLowerCase();
+      this.client.messages
+          .create({
+            body: text,
+            from: this.config.NETWORK_NUMBER,
+            to: userNumber,
+          })
+          .then((msg) => resolve(msg))
+          .catch((err) => reject(err));
+    });
+  }
+
+  sendThanks(body) {
+    return new Promise((resolve, reject) => {
+      // Add instance region code to properties,
+      // catch reports outside the reporting area and reply with default
+      this.properties.instanceRegionCode = body.instanceRegionCode ?
+          body.instanceRegionCode : this.config.DEFAULT_INSTANCE_REGION_CODE;
+
+      // Add report id to properties
+      this.properties.reportId = body.reportId;
+
+      this.bot.thanks(this.properties)
+          .then(({text, link}) => {
+            const thanksMessage = text + link;
+
+            // Send message
+            this.notify(thanksMessage, body.username)
+                .then((msg) => resolve(msg))
+                .catch((err) => reject(err));
+          })
+          .catch((err) => reject(err));
+    });
+  }
+
+  handleResponse(body) {
+    return new Promise((resolve, reject) => {
+      const msg = body.Body.toLowerCase();
+      const userNumber = body.From;
 
       if (this.config.CARDS_DECK.indexOf(msg) >= 0) {
         // User is requesting a report card link
+
+        // Add user id to properties
         this.properties.userId = userNumber;
 
         // Get one time card link
@@ -53,19 +92,6 @@ export default class {
             })
             .catch((err) => reject(err));
       }
-    });
-  }
-
-  notify(text, userNumber) {
-    return new Promise((resolve, reject) => {
-      this.client.messages
-          .create({
-            body: text,
-            from: this.config.NETWORK_NUMBER,
-            to: userNumber,
-          })
-          .then((msg) => resolve(msg))
-          .catch((err) => reject(err));
     });
   }
 }

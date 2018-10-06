@@ -1,6 +1,3 @@
-// TODO: Gulp task to select locale file from src/locales
-// based on build > deployment parameter?
-
 export default {
   // Set two letter language code
   'en': {

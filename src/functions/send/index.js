@@ -2,17 +2,14 @@ import config from '../../config';
 import NetworkService from '../../services/network';
 
 exports.handler = (event, context, callback) => {
-  // parse twilio-whatsapp programmable sms body
+  // parse cognicity server notification body
   const body = JSON.parse(event.body);
-  const userMessage = body.Body;
-  const userNumber = body.From;
 
-  // create receive service
+  // create network service
   const network = new NetworkService(config);
 
-  // get cardId
-  network.handleResponse(userMessage, userNumber)
-      // Log responded successfully
+  network.sendThanks(body)
+      // Log response sent successfully
       .then((result) => callback(null, result))
       // Throw error
       .catch((err) => callback(err));
