@@ -12,5 +12,8 @@ exports.handler = (event, context, callback) => {
       // Log response sent successfully
       .then((result) => callback(null, result))
       // Throw error
-      .catch((err) => callback(err));
+      .catch((err) => {
+        console.log(JSON.stringify(err));
+        callback(err);
+      });
 };

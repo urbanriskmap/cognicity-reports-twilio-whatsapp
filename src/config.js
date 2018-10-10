@@ -10,7 +10,8 @@ export default {
   CARDS_API: process.env.CARDS_API || 'https://data.riskmap.us/cards/',
   CARDS_API_KEY: process.env.CARDS_API_KEY,
   CARDS_DECK: (process.env.CARDS_DECK || 'flood').split(','),
-  CARDS_URL: process.env.CARDS_URL || 'https://cards.riskmap.us/',
+  // TODO: change card deck in CARDS_URL based on chatbot request
+  CARDS_URL: process.env.CARDS_URL || 'https://cards.riskmap.us/flood/',
   DEFAULT_LANGUAGE: process.env.DEFAULT_LANGUAGE || 'en',
   DEPLOYMENT_CODE: process.env.DEPLOYMENT_CODE || 'us',
   DEFAULT_INSTANCE_REGION_CODE: process.env.DEFAULT_INSTANCE_REGION_CODE,

@@ -46,9 +46,10 @@ export default class {
       this.bot.thanks(this.properties)
           .then(({text, link}) => {
             const thanksMessage = text + link;
+            const userNumber = decodeURIComponent(body.userId);
 
             // Send message
-            this.notify(thanksMessage, body.username)
+            this.notify(thanksMessage, userNumber)
                 .then((msg) => resolve(msg))
                 .catch((err) => reject(err));
           })
@@ -65,7 +66,7 @@ export default class {
         // User is requesting a report card link
 
         // Add user id to properties
-        this.properties.userId = userNumber;
+        this.properties.userId = encodeURIComponent(userNumber);
 
         // Get one time card link
         this.bot.card(this.properties)

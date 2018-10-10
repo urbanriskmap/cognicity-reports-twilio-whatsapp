@@ -4,8 +4,6 @@ service: cognicity
 
 provider:
   name: aws
-  apiKeys:
-    - ${file(./.env.yml):${opt:stage}-api-key}
   profile: serverless
   runtime: nodejs6.10
   stage: ${opt:stage}
@@ -41,7 +39,7 @@ functions:
         - bin/functions/webhook/**
     environment:
       API_KEY: ${file(./.env.yml):${opt:stage}-api-key}
-      CARDS_API: ${file(./.env.yml):${opt:stage}-cards-api},
+      CARDS_API: ${file(./.env.yml):${opt:stage}-cards-api}
       CARDS_API_KEY: ${file(./.env.yml):${opt:stage}-cards-api-key}
       CARDS_URL: ${file(./.env.yml):${opt:stage}-cards-url}
       DEFAULT_INSTANCE_REGION_CODE: ${file(./.env.yml):fallback-region}
