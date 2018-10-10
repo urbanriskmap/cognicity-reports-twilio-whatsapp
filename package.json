@@ -7,8 +7,8 @@
     "lint": "eslint src",
     "docs": "node_modules/.bin/esdoc",
     "build": "rm -rf ./bin && ./node_modules/.bin/babel src -d bin",
-    "deploy-dev": "export STAGE=dev && npm run deploy",
-    "deploy": "npm run build && serverless deploy -v -s $STAGE",
+    "deploy-dev": "npm run build && serverless deploy -v -s dev",
+    "deploy": "npm run build && serverless deploy -v -s prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
